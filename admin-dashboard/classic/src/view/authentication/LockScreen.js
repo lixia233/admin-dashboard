@@ -1,3 +1,6 @@
+/**
+ * 后期可以改成直接用手机号码验证码登录
+ */
 Ext.define('Admin.view.authentication.LockScreen', {
     extend: 'Admin.view.authentication.LockingWindow',
     xtype: 'lockscreen',

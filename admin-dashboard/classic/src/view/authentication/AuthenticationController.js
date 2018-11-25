@@ -4,14 +4,6 @@ Ext.define('Admin.view.authentication.AuthenticationController', {
 
     //TODO: implement central Facebook OATH handling here
 
-
-    /**
-     * 注册页面：
-     * 打开条款详情
-     */
-    openClauseDetailWindow:function(toolbar,rowIndex,colIndex){
-        toolbar.up('panel').up('container').add(Ext.widget('clauseDetailWindow')).show();
-    },
     /**
      * 关于使用条款元素单击
      */
@@ -50,8 +42,11 @@ Ext.define('Admin.view.authentication.AuthenticationController', {
 
     
 
+    /**
+     * 重置密码
+     */
     onResetClick:  function() {
-        this.redirectTo('dashboard', true);
+        this.redirectTo('login', true);
     }
 
     
