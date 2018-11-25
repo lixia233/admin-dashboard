@@ -49,7 +49,10 @@ Ext.define('Admin.view.authentication.Login', {
                         glyphed: {
                             cls:'trigger-glyph-noop auth-mobile-trigger'
                         }
-                    }
+                    },
+
+                    regex:/^1(3|4|5|7|8)\d{9}$/,
+                    regexText:'请输入正确的手机号码',
                 },
                 {
                     xtype: 'textfield',

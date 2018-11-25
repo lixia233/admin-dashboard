@@ -56,9 +56,11 @@ $dialog-trigger-color: dynamic(#e5e5e5);
     }
 
     .password-trigger,
-    .auth-email-trigger,
+    .auth-user-trigger,
     .auth-password-trigger,
+    .auth-password2-trigger,
     .auth-mobile-trigger,
+    .auth-write-trigger,
     .auth-envelope-trigger {
         &:before{
             top: 10px;
@@ -70,19 +72,27 @@ $dialog-trigger-color: dynamic(#e5e5e5);
 
         &.password-trigger:before,
         &.auth-password-trigger:before {
-            content: "\f023";
+            content: "\f09c";
         }
 
-        &.auth-email-trigger:before {
+        &.auth-user-trigger:before {
             content: "\f007";
+        }
+
+        &.auth-password2-trigger:before{
+            content: "\f023";
         }
 
         &.auth-mobile-trigger:before{
             content: "\f10a";
         }
 
+        &.auth-write-trigger:before{
+            content:"\f09d";
+        }
+
         &.auth-envelope-trigger:before {
-            content: "\f0e0";
+            content: "\f022";//\f022  \f0e0
         }
     }
 

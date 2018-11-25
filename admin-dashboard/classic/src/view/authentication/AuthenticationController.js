@@ -4,9 +4,37 @@ Ext.define('Admin.view.authentication.AuthenticationController', {
 
     //TODO: implement central Facebook OATH handling here
 
-    onFaceBookLogin : function() {
-        this.redirectTo('dashboard', true);
+
+    /**
+     * 注册页面：
+     * 打开条款详情
+     */
+    openClauseDetailWindow:function(toolbar,rowIndex,colIndex){
+        toolbar.up('panel').up('container').add(Ext.widget('clauseDetailWindow')).show();
     },
+    /**
+     * 关于使用条款元素单击
+     */
+    // onTermsOfUseElementClick:function(e){
+    //     var target;
+    //     target = e.getTarget('.terms');
+    //     e.preventDefault();
+    //     if(target){
+    //         this.lookupReference('clauseDetailWindow').show();
+    //     }
+    // },
+
+    /**
+     * 注册页面：
+     * 注册按钮
+     */
+    onSignupClick:  function() {
+        this.redirectTo('register2', true);
+    },
+
+    // onFaceBookLogin : function() {
+    //     this.redirectTo('dashboard', true);
+    // },
 
     onLoginButton: function() {
         this.redirectTo('dashboard', true);
@@ -20,11 +48,11 @@ Ext.define('Admin.view.authentication.AuthenticationController', {
         this.redirectTo('register', true);
     },
 
-    onSignupClick:  function() {
-        this.redirectTo('dashboard', true);
-    },
+    
 
     onResetClick:  function() {
         this.redirectTo('dashboard', true);
     }
+
+    
 });
