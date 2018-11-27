@@ -11,11 +11,13 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistration',{
         'Ext.layout.container.VBox'
     ],
 
+    controller: 'onlineRegistrationController',
+
     closable: false,//如果为True，则显示“关闭”工具按钮并允许用户关闭面板，或者显示false以隐藏按钮并禁止关闭窗口。
     resizable: false,//不允许用户在每个边调整窗口大小
     autoShow: true,//windows默认是隐藏，要设置为显示
     maximized: true,//最初以最大化窗口显示
-    modal: true,
+    modal: true,//如果为true，则浮动组件模态并在显示时屏蔽其后面的所有内容，为false以显示它而不限制对其他UI元素的访问。
     scrollable: true,//显示滚动条
     draggable: false,//不可拖动
 
@@ -79,7 +81,8 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistration',{
         items:[{
             colspan:2,//占2列
             rowspan:1,//占1行
-            xtype:'container',
+            // xtype:'container',
+            xtype:'panel',
             layout:{
                 type:'hbox',
                 pack:'center',
@@ -95,7 +98,7 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistration',{
                 iconAlign:'top',
                 iconCls:'fa fa-pencil-square-o fa-4x',
                 html:'<br>公办学校、幼儿园<br>点击申请',
-                handler:''
+                handler:'chooseSchool'//publicSchools
             },{
                 margin:'10 10 10 10',
                 width:200,
@@ -105,7 +108,7 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistration',{
                 iconAlign:'top',
                 iconCls:'fa fa-pencil-square fa-4x',
                 text:'<br>民办学校、幼儿园<br>点击申请',
-                handler:''
+                handler:'chooseSchool'//privateSchools
             }]
         },{
             colspan:2,//占2列

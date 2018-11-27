@@ -2,7 +2,7 @@ Ext.define('Admin.view.onlineRegistration.ApplicationRecord',{
     extend: 'Ext.panel.Panel',
     xtype:'applicationRecord',
 
-    // controller: 'userViewController',
+    controller: 'onlineRegistrationController',
     viewModel: {type: 'applicationRecordViewModel'},
 
     requires: [
