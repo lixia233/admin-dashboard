@@ -19,6 +19,12 @@ Ext.define('Admin.store.NavigationTree', {
                 leaf: true
             },
             {
+                text:'网上报名',
+                iconCls:'x-fa fa-calendar-plus-o',
+                viewType:'onlineRegistration',
+                leaf:true
+            },
+            {
                 text: 'Email',
                 iconCls: 'x-fa fa-send',
                 rowCls: 'nav-tree-badge nav-tree-badge-hot',
@@ -77,21 +83,20 @@ Ext.define('Admin.store.NavigationTree', {
                         viewType: 'lockscreen',
                         leaf: true
                     },
-
                     {
-                        text: 'Login',
+                        text: '登录',
                         iconCls: 'x-fa fa-check',
                         viewType: 'login',
                         leaf: true
                     },
                     {
-                        text: 'Register',
+                        text: '注册',
                         iconCls: 'x-fa fa-pencil-square-o',
                         viewType: 'register',
                         leaf: true
                     },
                     {
-                        text: 'Password Reset',
+                        text: '密码重置',
                         iconCls: 'x-fa fa-lightbulb-o',
                         viewType: 'passwordreset',
                         leaf: true

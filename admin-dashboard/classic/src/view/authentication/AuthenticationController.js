@@ -17,19 +17,21 @@ Ext.define('Admin.view.authentication.AuthenticationController', {
     // },
 
     /**
-     * 注册页面：
-     * 注册按钮
+     * 注册页面：注册按钮
      */
     onSignupClick:  function() {
-        this.redirectTo('register2', true);
+        this.redirectTo('login', true);
     },
 
     // onFaceBookLogin : function() {
     //     this.redirectTo('dashboard', true);
     // },
 
+    /**
+     * 登录页面：登录按钮
+     */
     onLoginButton: function() {
-        this.redirectTo('dashboard', true);
+        this.redirectTo('onlineRegistration', true);
     },
 
     onLoginAsButton: function() {

@@ -3,7 +3,8 @@ Ext.define('Admin.view.main.Main', {
 
     requires: [
         'Ext.button.Segmented',
-        'Ext.list.Tree'
+        'Ext.list.Tree',
+        'Ext.panel.Title'
     ],
 
     controller: 'main',
@@ -23,6 +24,10 @@ Ext.define('Admin.view.main.Main', {
 
     items: [
         {
+            title:'长安镇教育局统一招生管理系统',
+            titleAlign: 'center',
+        },
+        {
             xtype: 'toolbar',
             cls: 'sencha-dash-dash-headerbar shadow',
             height: 64,
@@ -32,7 +37,7 @@ Ext.define('Admin.view.main.Main', {
                     xtype: 'component',
                     reference: 'senchaLogo',
                     cls: 'sencha-logo',
-                    html: '<div class="main-logo"><img src="resources/images/company-logo.png">公办学校</div>',
+                    html: '<div class="main-logo"><img src="resources/images/checkbox.png"></div>',
                     width: 250
                 },
                 {
@@ -41,17 +46,6 @@ Ext.define('Admin.view.main.Main', {
                     iconCls:'x-fa fa-navicon',
                     id: 'main-navigation-btn',
                     handler: 'onToggleNavigationSize'
-                },
-                {
-                    xtype:'component',
-                    html:'<div>长安镇教育局统一招生管理系统</div>',
-                    width:500,
-                    style:{
-                        margin:'0 auto',
-                        textAlign:'center',
-                        fontSize:'x-large',
-                        fontFamily:'华文行楷'
-                    }
                 },
                 '->',
                 {

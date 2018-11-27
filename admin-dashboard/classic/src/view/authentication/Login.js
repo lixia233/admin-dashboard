@@ -34,7 +34,11 @@ Ext.define('Admin.view.authentication.Login', {
             items: [
                 {
                     xtype: 'label',
-                    text: '登陆'
+                    // text: '1.首次使用，请点击“注册”；2.已注册账号，请使用手机号码和密码登录。'
+                    html:'<div>1.首次使用，请点击“注册”；<br>2.已注册账号，请使用手机号码和密码登录。</div>',
+                    style:{
+                        color:'red'
+                    }
                 },
                 {
                     xtype: 'textfield',
@@ -77,6 +81,7 @@ Ext.define('Admin.view.authentication.Login', {
                     items:[{
                         xtype:'textfield',
                         hideLabel:true,
+                        allowBlank : false,
                         flex : 1,
                         emptyText:'请输入验证码'
                     },{
