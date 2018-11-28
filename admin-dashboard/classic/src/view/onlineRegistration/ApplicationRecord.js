@@ -3,7 +3,9 @@ Ext.define('Admin.view.onlineRegistration.ApplicationRecord',{
     xtype:'applicationRecord',
 
     controller: 'onlineRegistrationController',
-    viewModel: {type: 'applicationRecordViewModel'},
+    viewModel: {
+        type: 'applicationRecordViewModel'
+    },
 
     requires: [
         'Ext.grid.Panel',
@@ -95,6 +97,7 @@ Ext.define('Admin.view.onlineRegistration.ApplicationRecord',{
             cls: 'content-column',
             dataIndex: 'bool',
             text:'操作',
+            align:'center',
             items:[{
                 xtype:'button',
                 iconCls:'x-fa fa-pencil',

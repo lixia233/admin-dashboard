@@ -37,7 +37,7 @@ Ext.define('Admin.view.onlineRegistration.ChooseGradeWindow',{
     items:[{
         iconCls:'fa fa-sun-o fa-3x',
         html:'<br>幼儿园小班',
-        handler:''
+        handler:'chooseGrade'
     },{
         iconCls:'fa fa-futbol-o fa-3x',
         html:'<br>小学一年级',

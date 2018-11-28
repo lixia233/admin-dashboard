@@ -10,6 +10,13 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistrationController',{
     },
 
     /**
+     * 选择年级
+     */
+    chooseGrade:function(toolbar){
+        toolbar.up('panel').up('container').add(Ext.widget('selectCategoryWindow')).show();
+    }
+
+    /**
      * 公办学校招生
      */
     // publicSchools:function(toolbar){
