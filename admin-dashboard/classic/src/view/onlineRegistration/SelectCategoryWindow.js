@@ -39,24 +39,28 @@ Ext.define('Admin.view.onlineRegistration.SelectCategoryWindow',{
             xtype:'treelist',
             reference:'treelist',
             bind:'{navItems}',
-            listeners: {
-                'select': function(record) {
-                    alert(record.id);//获取选中树节点的id
-                    //获取关联的Grid的Store传参（树节点的id）
-                    var store = Ext.getCmp('category').getStore();
-                    if(record.id!='root'){//获取关联组件的Store动态扩展参数（选中的id）
-                        Ext.apply(store.proxy.extraParams, {
-                            id:record.id
-                        });  
-                    }else{
-                        Ext.apply(store.proxy.extraParams, {
-                            id:null
-                        });  
+            listeners:{
+                click:{
+                    selectionText: function(get) {
+                        var selection = get('treelist.selection'), path;
+                        if (selection) {
+                            path = selection.getPath('text');
+                            console.log("path1:"+path);
+                            path = path.replace(/^\/Root/, '');
+                            console.log("path2:"+path);
+                            path = path.replace(/^\//,'');
+                            console.log("path3:"+path);
+                            console.log(selection.getId());
+                            // alert(path);
+            
+                            return 'Selected: ' + path;
+                        } else {
+                            return 'No node selected';
+                        }
+                        
                     }
-                    store.load(); //让关联组件的Store 加载关联数据
-                }   
+                }
             }
-        
         }]
     },{
         region:'center',
