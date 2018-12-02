@@ -8,6 +8,11 @@ Ext.define('Admin.view.onlineRegistration.SelectCategoryWindow',{
         type:'categoryTreeViewModel'
     },
 
+    requires: [
+        'Ext.layout.container.Border',
+        'Ext.list.Tree'
+    ],
+
     height:600,
     width:800,
     scrollable:true,
@@ -20,48 +25,43 @@ Ext.define('Admin.view.onlineRegistration.SelectCategoryWindow',{
 
     layout:'border',
 
-    defaults:{
-        bodyPadding:10
-    },
+    // defaults:{
+    //     bodyPadding:10
+    // },
 
     items:[{
         region:'west',
         width:200,
+        collapsible:true,//如果为True，则使面板可折叠，并在标题工具按钮区域中添加展开/折叠切换工具。
+        border:false,
+        scrollable:true,
         split:true,
-        reference:'categoryTreeContainer',
         layout:{
             type:'vbox',
             align:'stretch'
         },
-        border:false,
-        scrollable:true,
+        title:'类别',
+        titleAlign:'center',
         items:[{
-            xtype:'treelist',
-            reference:'treelist',
-            bind:'{navItems}',
-            listeners:{
-                click:{
-                    selectionText: function(get) {
-                        var selection = get('treelist.selection'), path;
-                        if (selection) {
-                            path = selection.getPath('text');
-                            console.log("path1:"+path);
-                            path = path.replace(/^\/Root/, '');
-                            console.log("path2:"+path);
-                            path = path.replace(/^\//,'');
-                            console.log("path3:"+path);
-                            console.log(selection.getId());
-                            // alert(path);
-            
-                            return 'Selected: ' + path;
-                        } else {
-                            return 'No node selected';
-                        }
-                        
-                    }
-                }
-            }
+            xtype:'categoryTree'
         }]
+
+    // },{
+        // region:'west',
+        // width:200,
+        // split:true,
+        // reference:'categoryTreeContainer',
+        // layout:{
+        //     type:'vbox',
+        //     align:'stretch'
+        // },
+        // border:false,
+        // scrollable:true,
+        // items:[{
+        //     xtype:'treelist',
+        //     reference:'treelist',
+        //     bind:'{navItems}'
+        // }]
     },{
         region:'center',
         bodyPadding:10,

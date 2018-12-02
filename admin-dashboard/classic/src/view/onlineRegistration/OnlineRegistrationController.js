@@ -3,25 +3,27 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistrationController',{
     alias: 'controller.onlineRegistrationController',
 
     /**
-     * 选择学校
+     * 公办学校招生
+     * 点击公办学校，打开选择年级窗口
      */
-    chooseSchool:function(toolbar){
+    publicSchools:function(toolbar){
         toolbar.up('panel').up('container').add(Ext.widget('chooseGradeWindow')).show();
     },
 
     /**
-     * 选择年级
+     * 选择年级，打开选择类别窗口
      */
     chooseGrade:function(toolbar){
         toolbar.up('panel').up('container').add(Ext.widget('selectCategoryWindow')).show();
-    }
+    },
 
     /**
-     * 公办学校招生
+     * 点击申请
      */
-    // publicSchools:function(toolbar){
-    //     toolbar.up('panel').up('container').add(Ext.widget('chooseGradeWindow')).show();
-    // },
+    chooseCategory:function(){
+
+    }
+
 
     /**
      * 私立学校招生

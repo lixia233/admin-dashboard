@@ -54,7 +54,7 @@ Ext.define('Admin.view.onlineRegistration.Category',{
                 xtype:'button',
                 iconCls:'x-fa fa-check-square-o',
                 tooltip:'点击申请',
-                handler:''
+                handler:'chooseCategory'
             }]
         }]
     }]

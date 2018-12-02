@@ -98,7 +98,7 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistration',{
                 iconAlign:'top',
                 iconCls:'fa fa-pencil-square-o fa-4x',
                 html:'<br>公办学校、幼儿园<br>点击申请',
-                handler:'chooseSchool'//publicSchools
+                handler:'publicSchools'//publicSchools
             },{
                 margin:'10 10 10 10',
                 width:200,
@@ -108,7 +108,7 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistration',{
                 iconAlign:'top',
                 iconCls:'fa fa-pencil-square fa-4x',
                 text:'<br>民办学校、幼儿园<br>点击申请',
-                handler:'chooseSchool'//privateSchools
+                handler:'privateSchools'//privateSchools
             }]
         },{
             colspan:2,//占2列
