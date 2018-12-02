@@ -9,7 +9,8 @@
         -Xbootclasspath/a:lombok.jar
         -javaagent:lombok.jar
     3.重启 eclipse / myeclipse/STS
-
+或者
+File → settings → Plugins -> lombok
 
 2018.11.27
 明天任务：http://examples.sencha.com/extjs/6.6.0/examples/kitchensink/?classic#tree-list
