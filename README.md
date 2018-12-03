@@ -1,10 +1,11 @@
 # admin-dashboard
 毕设前端
-2018.12.3
+
+--2018.12.3--
 编写按钮样式：
 F:\Documents\Tencent Files\982300486\FileRecv\Activiti学习笔记（1）.docx 第44页
 
-2018.11.27
+--2018.11.27
 明天任务：http://examples.sencha.com/extjs/6.6.0/examples/kitchensink/?classic#tree-list
 
 后期改进：
@@ -15,10 +16,11 @@ F:\Documents\Tencent Files\982300486\FileRecv\Activiti学习笔记（1）.docx �
 
 # recruit-students
 毕设后台
-2018.12.3
+
+--2018.12.3
 下载activiti6.0
 
-2018.12.2
+--2018.12.2
 安装Lombo方法：https://projectlombok.org/download.html 下载jar包
     1. 将 lombok.jar 复制到 myeclipse.ini / eclipse.ini /sts.ini所在的文件夹目录下
     2. 打开 eclipse.ini / myeclipse.ini/sts.ini，在最后面插入以下两行并保存：
