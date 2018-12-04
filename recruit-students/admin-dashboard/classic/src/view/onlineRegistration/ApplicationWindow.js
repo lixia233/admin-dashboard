@@ -30,6 +30,7 @@ Ext.define('Admin.view.onlineRegistration.ApplicationWindow',{
         xtype:'form',
         title:'js点击监听？',
         layout:'card',
+        height:400,
         fieldDefaults:{
             border:false,
             labelAlign:'right',
