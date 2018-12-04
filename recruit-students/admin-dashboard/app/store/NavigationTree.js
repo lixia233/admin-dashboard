@@ -15,7 +15,7 @@ Ext.define('Admin.store.NavigationTree', {
                 iconCls: 'x-fa fa-desktop',
                 rowCls: 'nav-tree-badge nav-tree-badge-new',
                 viewType: 'admindashboard',
-                routeId: 'dashboard', // routeId defaults to viewType
+                routeId: 'dashboard', // routeId defaults to viewType，routeId默认为viewType
                 leaf: true
             },
             {

@@ -52,7 +52,7 @@ Ext.define('Admin.view.onlineRegistration.Category',{
             align:'center',
             items:[{
                 xtype:'button',
-                iconCls:'x-fa fa-check-square-o',
+                iconCls:'x-fa fa-calendar-plus-o',
                 tooltip:'点击申请',
                 handler:'chooseCategory'
             }]

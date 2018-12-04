@@ -162,7 +162,7 @@ Ext.define('Admin.view.authentication.PasswordReset', {
                         l.setActiveItem(next);
                         me.down('#card-prev').setDisabled(next===0);
                         me.down('#card-next').setDisabled(next===1);
-                    },
+                    }
                 },
                 {
                     xtype: 'button',

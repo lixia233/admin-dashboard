@@ -1,7 +1,7 @@
-Ext.define('Admin.view.onlineRegistration.SelectCategoryWindow',{
+Ext.define('Admin.view.onlineRegistration.ChooseCategoryWindow',{
     extend:'Ext.window.Window',
-    alias:'widget.selectCategoryWindow',
-    reference:'selectCategoryWindow',
+    alias:'widget.chooseCategoryWindow',
+    reference:'chooseCategoryWindow',
 
     controller:'onlineRegistrationController',
     viewModel:{

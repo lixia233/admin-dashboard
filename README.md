@@ -4,6 +4,8 @@
 
     2.表格里的按钮要添加颜色
 
+        编写按钮样式：F:\Documents\Tencent Files\982300486\FileRecv\Activiti学习笔记（1）.docx 第44页
+
     3.侧边栏树的颜色需要改
 
 
@@ -11,11 +13,9 @@
 
 # admin-dashboard 毕设前端
 
-2018.12.3
+2018.12.4
 
-编写按钮样式：
-F:\Documents\Tencent Files\982300486\FileRecv\Activiti学习笔记（1）.docx 第44页
-
+明天任务：申请信息的填写页面的实现
 
 2018.11.27
 
