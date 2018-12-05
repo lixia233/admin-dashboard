@@ -37,19 +37,27 @@ Ext.define('Admin.view.onlineRegistration.ChooseGradeWindow',{
     items:[{
         iconCls:'fa fa-sun-o fa-3x',
         html:'<br>幼儿园小班',
-        handler:'chooseKindergarten'
+        id:'kindergartenButton',
+        // handler:'chooseKindergarten'
+        handler:'chooseGrade'
     },{
         iconCls:'fa fa-futbol-o fa-3x',
         html:'<br>小学一年级',
-        handler:'choosePrimarySchool'
+        id:'primarySchoolButton',
+        // handler:'choosePrimarySchool'
+        handler:'chooseGrade'
     },{
         iconCls:'fa fa-leanpub fa-3x',
         html:'<br>初中一年级',
-        handler:'chooseJuniorHighSchool'
+        id:'juniorHighSchoolButton',
+        // handler:'chooseJuniorHighSchool'
+        handler:'chooseGrade'
     },{
         iconCls:'fa fa-balance-scale fa-3x',
         html:'<br>插班生',
-        handler:'chooseTransferStudent'
+        id:'transferStudentButton',
+        // handler:'chooseTransferStudent'
+        handler:'chooseGrade'
     }]
 
 

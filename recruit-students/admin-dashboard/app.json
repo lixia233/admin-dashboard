@@ -219,7 +219,14 @@
             {
                 "path": "${framework.dir}/build/ext-all-rtl-debug.js"
             }
-        ]
+        ],
+
+        //组件汉化
+        "requires" : [
+            "locale"
+        ],
+        "locale": "zh_CN"
+
     },
 
     /**

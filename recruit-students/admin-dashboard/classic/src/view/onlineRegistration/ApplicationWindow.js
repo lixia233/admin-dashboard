@@ -2,8 +2,9 @@ Ext.define('Admin.view.onlineRegistration.ApplicationWindow',{
     extend:'Ext.window.Window',
     alias:'widget.applicationWindow',
     reference:'applicationWindow',
+    id:'applicationWindow',
 
-    controller:'onlineRegistrationController',
+    // controller:'onlineRegistrationController',
 
     requires: [
         'Ext.button.Button',
@@ -15,22 +16,23 @@ Ext.define('Admin.view.onlineRegistration.ApplicationWindow',{
         'Ext.form.Panel'
     ],
 
-    height:600,
+    height:655,
     width:800,
     scrollable:true,
     bodyPadding:10,
     closable: true,//如果为True，则显示“关闭”工具按钮并允许用户关闭面板
     modal:true,//如果为true，则浮动组件模态并在显示时屏蔽其后面的所有内容，为false以显示它而不限制对其他UI元素的访问。
 
-    title:'请填写申请信息',
-    titleAlign:'center',
+    // title:'<i class="fa fa-home" aria-hidden="true"></i>请填写申请信息',
+    titleAlign:'left',
 
     items:[{
         // xtype:'panel',
         xtype:'form',
-        title:'js点击监听？',
+        title:'请填写申请信息',
+        titleAlign:'center',
         layout:'card',
-        height:400,
+        height:550,
         fieldDefaults:{
             border:false,
             labelAlign:'right',
@@ -46,9 +48,82 @@ Ext.define('Admin.view.onlineRegistration.ApplicationWindow',{
                 anchor:'100%'
             },
             items:[{
+                xtype: 'textfield',
                 fieldLabel:'学生姓名',
                 name:'student_name',
                 allowBlank:false
+            },{
+                xtype:'textfield',
+                fieldLabel:'学生身份证号码',
+                name:'student_identificationNumber',
+                allowBlank:false,
+                regex:/^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
+                regexText:'请输入学生的18位有效身份证号码'
+            },{
+                xtype:'radiogroup',
+                fieldLabel:'学生性别',
+                name:'student_sex',
+                allowBlank:false,
+                items:[{
+                    boxLabel:'男',
+                    inputValue:'男'
+                },{
+                    boxLabel:'女',
+                    inputValue:'女'
+                }]
+            },{
+                xtype:'datefield',
+                fieldLabel:'学生出生日期',
+                name:'student_birthday',
+                allowBlank:false,
+                format:'Y/m/d',
+                value:new Date(),
+                maxValue:new Date()
+            },{
+                xtype:'combobox',
+                fieldLabel:'学生民族',
+                name:'student_nationality',
+                allowBlank:false,
+                emptyText: '---请选择---',
+                displayField:'num', //要绑定到此ComboBox 的基础数据字段名称。
+                valueField:'nationalityType',
+                store:{
+                    type:'nationalityStore'
+                },
+                queryMode: 'local', //ComboBox使用配置的Store的模式。默认remote,远程
+                minChars: 0, //用户在自动完成和typeAhead激活之前必须输入的最小字符数。
+                typeAhead: true, //如果匹配已知值，则填充并自动选择在可配置延迟（typeAheadDelay）之后键入的文本的其余部分。
+                forceSelection:true  //防止自由格式值并将其限制为列表中的项目
+            },{
+                xtype:'textfield',
+                fieldLabel:'学生户口所在地',
+                name:'student_registeredResidence',
+                allowBlank:false
+            },{
+                xtype:'combobox',
+                fieldLabel:'父母婚姻状况',
+                name:'student_parentalMarriage',
+                allowBlank:false,
+                emptyText: '---请选择---',
+                displayField:'name', //要绑定到此ComboBox 的基础数据字段名称。
+                valueField:'value',
+                store:Ext.create('Ext.data.Store',{
+                    fields:["name","value"],
+                    data:[
+                        {name:'未婚',value:'未婚'},
+                        {name:'已婚(有配偶)',value:'已婚'},
+                        {name:'丧偶',value:'丧偶'},
+                        {name:'离婚',value:'离婚'}
+                    ]
+                }),
+                queryMode: 'local', //ComboBox使用配置的Store的模式。默认remote,远程
+                minChars: 0, //用户在自动完成和typeAhead激活之前必须输入的最小字符数。
+                typeAhead: true, //如果匹配已知值，则填充并自动选择在可配置延迟（typeAheadDelay）之后键入的文本的其余部分。
+                forceSelection:true  //防止自由格式值并将其限制为列表中的项目
+            },{
+                xtype:'textfield',
+                fieldLabel:'学生健康智力情况',
+                name:'student_health'
             }]
         },{
             id:'application-1',
