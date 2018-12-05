@@ -13,6 +13,11 @@
 
 # admin-dashboard 毕设前端
 
+2018.12.5
+行政区划：https://baike.baidu.com/item/%E9%87%8D%E5%BA%86%E5%B8%82%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92#2
+
+http://xzqh.mca.gov.cn/map
+
 2018.12.4
 
 明天任务：申请信息的填写页面的实现

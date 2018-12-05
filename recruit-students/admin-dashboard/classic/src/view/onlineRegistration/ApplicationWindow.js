@@ -95,10 +95,27 @@ Ext.define('Admin.view.onlineRegistration.ApplicationWindow',{
                 typeAhead: true, //如果匹配已知值，则填充并自动选择在可配置延迟（typeAheadDelay）之后键入的文本的其余部分。
                 forceSelection:true  //防止自由格式值并将其限制为列表中的项目
             },{
-                xtype:'textfield',
+                xtype:'fieldcontainer',
                 fieldLabel:'学生户口所在地',
                 name:'student_registeredResidence',
-                allowBlank:false
+                allowBlank:false,
+                combineErrors:true, // 字段容器将根据配置的msgTarget自动组合并显示其包含的所有字段中的验证错误，作为容器上的单个错误 
+                defaults:{
+                    hideLabel:true, //完全隐藏标签元素（fieldLabel和labelSeparator）
+                    margin:'0 5 0 0'
+                },
+                items:[{
+                    xtype:'combobox',
+                    name:'provice',
+                    allowBlank:false,
+                    emptyText:'---请选择省份---',
+                    queryMode: 'local', //ComboBox使用配置的Store的模式。默认remote,远程
+                    typeAhead: true, //如果匹配已知值，则填充并自动选择在可配置延迟（typeAheadDelay）之后键入的文本的其余部分。
+                    forceSelection:true, //将所选值限制为列表中的某个值
+                    store:Ext.create('Ext.data.Store',{
+                        
+                    })
+                }]
             },{
                 xtype:'combobox',
                 fieldLabel:'父母婚姻状况',
