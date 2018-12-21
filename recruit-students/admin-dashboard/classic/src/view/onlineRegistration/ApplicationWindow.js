@@ -107,6 +107,49 @@ Ext.define('Admin.view.onlineRegistration.ApplicationWindow',{
                 },
                 items:[{
                     xtype:'combobox',
+                    hidden:true,    //隐藏组件
+                    id:'country',
+                    name:'country',
+                    queryMode:'local',
+                    forceSelection:true,
+                    value:'',
+                    store:{
+                        type:'addressStore'
+                    },
+                    displayField:'text',
+                    valueField:'id',
+                    listeners:{
+                        afterRender:function(){
+                            var country = Ext.getCmp('country');
+                            country.reset();
+                            country.setValue(country.getStore().getAt(0));  //设置默认值，默认第一个
+                        },
+                        change:function(combo){
+                            //获取combobox组件值
+                            var provice = Ext.getCmp('provice');
+                            var city = Ext.getCmp('city');
+                            var county = Ext.getCmp('county');
+                            //清空已加载列表
+                            provice.getStore().removeAll();
+                            city.getStore().removeAll();
+                            county.getStore().removeAll();
+                            //清空已存在的结果
+                            provice.reset();
+                            city.reset();
+                            county.reset();
+                            //加载列表
+                            var data = new Array();
+                            var store = Ext.getCmp('country').getStore();
+                            Ext.each(store.data.items,function(item){
+                                if(item.data.parent == 1){
+                                    data.push(item);
+                                }
+                            });
+                            provice.getStore().add(data);
+                        }
+                    }
+                },{
+                    xtype:'combobox',
                     name:'provice',
                     id:'provice',
                     allowBlank:false,
@@ -120,30 +163,33 @@ Ext.define('Admin.view.onlineRegistration.ApplicationWindow',{
                     displayField:'text',
                     valueField:'id',
                     listeners:{
+                        afterRender:function(){
+                            var provice = Ext.getCmp('provice');
+                            var country = Ext.getCmp('country');
+                            provice.reset();
+                            provice.setValue(country.getStore().getAt(19));  //设置默认值，默认广东省（id:20）
+                        },
                         change:function(combo){
-                            var parent = combo.getValue();
-                            console.log(parent);
+                            var parent = combo.getValue();  //获取选中值
+                            // console.log(parent);
                             var city = Ext.getCmp('city');  //获取city combobox组件
-                            city.getStore().removeAll();    //清空已加载列表
-                            city.reset();   //清空已存在的结果
-                            city.getStore().add(this.getChild(parent));
+                            var county = Ext.getCmp('county');  //获取county combobox组件
+                            //清空已加载列表
+                            city.getStore().removeAll();
+                            county.getStore().removeAll();
+                            //清空已存在的结果
+                            city.reset();
+                            county.reset();
+                            //加载列表
+                            var data = new Array();
+                            var store = Ext.getCmp('country').getStore();
+                            Ext.each(store.data.items,function(item){
+                                if(item.data.parent == parent){
+                                    data.push(item);
+                                }
+                            });
+                            city.getStore().add(data);
                         }
-                    },
-                    getChild:function(parent){
-                        console.log('parent:'+parent);
-                        var data = new Array();
-                        var store = Ext.getCmp('provice').getStore();
-                        console.log(store.data.map);
-                        Ext.each(store.data.map,function(item){
-                            console.log('item:'+item);
-                            console.log('item.data:'+item.data);
-                            console.log('item.parent:'+item.parent);
-                            if(item.parent == parent){
-                                data.push(item);
-                            }
-                        });
-                        console.log("data:"+data);
-                        return data;
                     }
                 },{
                     xtype:'combobox',
@@ -159,9 +205,33 @@ Ext.define('Admin.view.onlineRegistration.ApplicationWindow',{
                     },
                     displayField:'text',
                     valueField:'id',
+                    listeners:{
+                        afterRender:function(){
+                            var city = Ext.getCmp('city');
+                            var country = Ext.getCmp('country');
+                            city.reset();
+                            city.setValue(country.getStore().getAt(1892));  //设置默认值，默认东莞市（id:1893）
+                        },
+                        change:function(combo){
+                            var parent = combo.getValue();  //获取选中值
+                            var county = Ext.getCmp('county');  //获取county combobox组件
+                            county.getStore().removeAll();     //清空已加载列表
+                            county.reset(); //清空已存在的结果
+                            //加载列表
+                            var data = new Array();
+                            var store = Ext.getCmp('country').getStore();
+                            Ext.each(store.data.items,function(item){
+                                if(item.data.parent == parent){
+                                    data.push(item);
+                                }
+                            });
+                            county.getStore().add(data);
+                        }
+                    }
                 },{
                     xtype:'combobox',
                     name:'county',
+                    id:'county',
                     allowBlank:false,
                     emptyText:'---请选择地区---',
                     queryMode: 'local', //ComboBox使用配置的Store的模式。默认remote,远程
@@ -172,6 +242,14 @@ Ext.define('Admin.view.onlineRegistration.ApplicationWindow',{
                     },
                     displayField:'text',
                     valueField:'id',
+                    listeners:{
+                        afterRender:function(){
+                            var county = Ext.getCmp('county');
+                            var country = Ext.getCmp('country');
+                            county.reset();
+                            county.setValue(country.getStore().getAt(2034));  //设置默认值，默认长安镇（id:2035）
+                        }
+                    }
                 },{
                     xtype:'textfield',
                     name:'detailed',
