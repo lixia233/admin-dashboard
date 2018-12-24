@@ -55,6 +55,93 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistrationController',{
         }
         console.log(panel.getTitle());
     },
+
+    /**
+     * 地址组件联动
+     */
+    countryAfterRender:function(){
+        var country = Ext.getCmp('country');
+        country.reset();
+        country.setValue(country.getStore().getAt(0));  //设置默认值，默认第一个
+    },
+    countryChange:function(combo){
+        //获取combobox组件值
+        var provice = Ext.getCmp('provice');
+        var city = Ext.getCmp('city');
+        var county = Ext.getCmp('county');
+        //清空已加载列表
+        provice.getStore().removeAll();
+        city.getStore().removeAll();
+        county.getStore().removeAll();
+        //清空已存在的结果
+        provice.reset();
+        city.reset();
+        county.reset();
+        //加载列表
+        var data = new Array();
+        var store = Ext.getCmp('country').getStore();
+        Ext.each(store.data.items,function(item){
+            if(item.data.parent == 1){
+                data.push(item);
+            }
+        });
+        provice.getStore().add(data);
+    },
+    proviceAfterRender:function(){
+        var provice = Ext.getCmp('provice');
+        var country = Ext.getCmp('country');
+        provice.reset();
+        provice.setValue(country.getStore().getAt(19));  //设置默认值，默认广东省（id:20）
+    },
+    countryChange:function(combo){
+        var parent = combo.getValue();  //获取选中值
+        // console.log(parent);
+        var city = Ext.getCmp('city');  //获取city combobox组件
+        var county = Ext.getCmp('county');  //获取county combobox组件
+        //清空已加载列表
+        city.getStore().removeAll();
+        county.getStore().removeAll();
+        //清空已存在的结果
+        city.reset();
+        county.reset();
+        //加载列表
+        var data = new Array();
+        var store = Ext.getCmp('country').getStore();
+        Ext.each(store.data.items,function(item){
+            if(item.data.parent == parent){
+                data.push(item);
+            }
+        });
+        city.getStore().add(data);
+    },
+    cityAfterRender:function(){
+        var city = Ext.getCmp('city');
+        var country = Ext.getCmp('country');
+        city.reset();
+        city.setValue(country.getStore().getAt(1892));  //设置默认值，默认东莞市（id:1893）
+    },
+    countryChange:function(combo){
+        var parent = combo.getValue();  //获取选中值
+        var county = Ext.getCmp('county');  //获取county combobox组件
+        county.getStore().removeAll();     //清空已加载列表
+        county.reset(); //清空已存在的结果
+        //加载列表
+        var data = new Array();
+        var store = Ext.getCmp('country').getStore();
+        Ext.each(store.data.items,function(item){
+            if(item.data.parent == parent){
+                data.push(item);
+            }
+        });
+        county.getStore().add(data);
+    },
+    countyAfterRender:function(){
+        var county = Ext.getCmp('county');
+        var country = Ext.getCmp('country');
+        county.reset();
+        county.setValue(country.getStore().getAt(2034));  //设置默认值，默认长安镇（id:2035）
+    },
+
     /**
      * 申请信息的保存
      */
