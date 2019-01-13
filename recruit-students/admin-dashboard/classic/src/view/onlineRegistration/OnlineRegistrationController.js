@@ -60,15 +60,19 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistrationController',{
      * 地址组件联动
      */
     countryAfterRender:function(){
-        var country = Ext.getCmp('country');
+        // var country = Ext.getCmp('country');
+        var country = this.lookupReference('country');
         country.reset();
         country.setValue(country.getStore().getAt(0));  //设置默认值，默认第一个
     },
     countryChange:function(combo){
         //获取combobox组件值
-        var provice = Ext.getCmp('provice');
-        var city = Ext.getCmp('city');
-        var county = Ext.getCmp('county');
+        // var provice = Ext.getCmp('provice');
+        // var city = Ext.getCmp('city');
+        // var county = Ext.getCmp('county');
+        var provice = this.lookupReference('provice');
+        var city = this.lookupReference('city');
+        var county = this.lookupReference('county');
         //清空已加载列表
         provice.getStore().removeAll();
         city.getStore().removeAll();
@@ -78,8 +82,9 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistrationController',{
         city.reset();
         county.reset();
         //加载列表
-        var data = new Array();
-        var store = Ext.getCmp('country').getStore();
+        var data = [];
+        // var store = Ext.getCmp('country').getStore();
+        var store = this.lookupReference('country').getStore();
         Ext.each(store.data.items,function(item){
             if(item.data.parent == 1){
                 data.push(item);
@@ -88,16 +93,20 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistrationController',{
         provice.getStore().add(data);
     },
     proviceAfterRender:function(){
-        var provice = Ext.getCmp('provice');
-        var country = Ext.getCmp('country');
+        // var provice = Ext.getCmp('provice');
+        // var country = Ext.getCmp('country');
+        var provice = this.lookupReference('provice');
+        var country = this.lookupReference('country');
         provice.reset();
         provice.setValue(country.getStore().getAt(19));  //设置默认值，默认广东省（id:20）
     },
-    countryChange:function(combo){
+    proviceChange:function(combo){
         var parent = combo.getValue();  //获取选中值
         // console.log(parent);
-        var city = Ext.getCmp('city');  //获取city combobox组件
-        var county = Ext.getCmp('county');  //获取county combobox组件
+        // var city = Ext.getCmp('city');  //获取city combobox组件
+        // var county = Ext.getCmp('county');  //获取county combobox组件
+        var city = this.lookupReference('city');
+        var county = this.lookupReference('county');
         //清空已加载列表
         city.getStore().removeAll();
         county.getStore().removeAll();
@@ -105,8 +114,10 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistrationController',{
         city.reset();
         county.reset();
         //加载列表
-        var data = new Array();
-        var store = Ext.getCmp('country').getStore();
+        // var data = new Array();
+        var data = [];
+        // var store = Ext.getCmp('country').getStore();
+        var store = this.lookupReference('country').getStore();
         Ext.each(store.data.items,function(item){
             if(item.data.parent == parent){
                 data.push(item);
@@ -115,19 +126,24 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistrationController',{
         city.getStore().add(data);
     },
     cityAfterRender:function(){
-        var city = Ext.getCmp('city');
-        var country = Ext.getCmp('country');
+        // var city = Ext.getCmp('city');
+        // var country = Ext.getCmp('country');
+        var city = this.lookupReference('city');
+        var country = this.lookupReference('country');
         city.reset();
         city.setValue(country.getStore().getAt(1892));  //设置默认值，默认东莞市（id:1893）
     },
-    countryChange:function(combo){
+    cityChange:function(combo){
         var parent = combo.getValue();  //获取选中值
-        var county = Ext.getCmp('county');  //获取county combobox组件
+        // var county = Ext.getCmp('county');  //获取county combobox组件
+        var county = this.lookupReference('county');
         county.getStore().removeAll();     //清空已加载列表
         county.reset(); //清空已存在的结果
         //加载列表
-        var data = new Array();
-        var store = Ext.getCmp('country').getStore();
+        // var data = new Array();
+        var data = [];
+        // var store = Ext.getCmp('country').getStore();
+        var store = this.lookupReference('country').getStore();
         Ext.each(store.data.items,function(item){
             if(item.data.parent == parent){
                 data.push(item);
@@ -136,10 +152,112 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistrationController',{
         county.getStore().add(data);
     },
     countyAfterRender:function(){
-        var county = Ext.getCmp('county');
-        var country = Ext.getCmp('country');
+        // var county = Ext.getCmp('county');
+        // var country = Ext.getCmp('country');
+        var county = this.lookupReference('county');
+        var country = this.lookupReference('country');
         county.reset();
         county.setValue(country.getStore().getAt(2034));  //设置默认值，默认长安镇（id:2035）
+    },
+
+    /**
+     * 父亲户籍所在地
+     * 选择是或者否
+     */
+    fatherSelectYes:function(checked){
+        if(checked){
+            var select = this.lookupReference('father_selectY').getValue();
+            console.log("fY:"+select);
+            if(select === true){
+                console.log("f1");
+                this.lookupReference('fatherCommunity').show();
+                this.lookupReference('fatherRegisteredResidence').hide();
+            }else{
+                console.log("f2");
+                this.lookupReference('fatherCommunity').hide();
+                this.lookupReference('fatherRegisteredResidence').show();
+            }
+        }
+    },
+    fatherSelectNo:function(checked){
+        if(checked){
+            var select = this.lookupReference('father_selectN').getValue();
+            console.log("fN:"+select);
+            if(select === true){
+                console.log("f3");
+                this.lookupReference('fatherCommunity').hide();
+                this.lookupReference('fatherRegisteredResidence').show();
+            }else{
+                console.log("f4");
+                this.lookupReference('fatherCommunity').show();
+                this.lookupReference('fatherRegisteredResidence').hide();
+            }
+        }
+    },
+
+     /**
+     * 母亲户籍所在地
+     * 选择是或者否
+     */
+    motherSelectYes:function(checked){
+        if(checked){
+            var select = this.lookupReference('mother_selectY').getValue();
+            console.log("mY:"+select);
+            if(select === true){
+                console.log("m1");
+                this.lookupReference('motherCommunity').show();
+                this.lookupReference('motherRegisteredResidence').hide();
+            }else{
+                console.log("m2");
+                this.lookupReference('motherCommunity').hide();
+                this.lookupReference('motherRegisteredResidence').show();
+            }
+        }
+    },
+    motherSelectNo:function(checked){
+        if(checked){
+            var select = this.lookupReference('mother_selectN').getValue();
+            console.log("mN:"+select);
+            if(select === true){
+                console.log("m3");
+                this.lookupReference('motherCommunity').hide();
+                this.lookupReference('motherRegisteredResidence').show();
+            }else{
+                console.log("m4");
+                this.lookupReference('motherCommunity').show();
+                this.lookupReference('motherRegisteredResidence').hide();
+            }
+        }
+    },
+
+    /**
+     * 选择社区或者楼盘
+     */
+    selectCommunity:function(checked){
+        if(checked){
+            var select = this.lookupReference('select_community').getValue();
+            console.log("select_community:"+select);
+            if(select === true){
+                this.lookupReference('addressCommunity').show();
+                this.lookupReference('addressProperty').hide();
+            }else{
+                this.lookupReference('addressCommunity').hide();
+                this.lookupReference('addressProperty').show();
+            }
+        }
+    },
+    selectProperty:function(checked){
+        if(checked){
+            var select = this.lookupReference('select_property').getValue();
+            console.log("select_property:"+select);
+            if(select === true){
+                this.lookupReference('addressCommunity').hide();
+                this.lookupReference('addressProperty').show();
+            }else{
+                this.lookupReference('addressCommunity').show();
+                this.lookupReference('addressProperty').hide();
+            }
+        }
     },
 
     /**

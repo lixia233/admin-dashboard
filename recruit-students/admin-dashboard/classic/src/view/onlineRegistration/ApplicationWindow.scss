@@ -1,0 +1,8 @@
+/* 去除form组件中的textfield里面input的边框样式
+ * 使用方式在textfield中添加 cls: 'x-form-textfield-noborder'
+ */
+ .x-form-textfield-noborder .x-form-trigger-wrap-default{
+    border-width: 0px;
+    border-style: solid;
+    border-color: #d0d0d0;
+}

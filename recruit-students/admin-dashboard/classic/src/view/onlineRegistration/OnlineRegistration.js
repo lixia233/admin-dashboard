@@ -117,7 +117,9 @@ Ext.define('Admin.view.onlineRegistration.OnlineRegistration',{
             defaults:{
                 bodyPadding:10
             },
-            items:[{xtype:'applicationRecord'}]
+            items:[{
+                xtype:'applicationRecord'
+            }]
         }]
     }]
 

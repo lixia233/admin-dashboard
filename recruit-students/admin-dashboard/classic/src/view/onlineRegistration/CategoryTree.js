@@ -11,7 +11,7 @@ Ext.define('Admin.view.onlineRegistration.CategoryTree',{
 			
 			//获取树节点id
 			var id = record.id;
-			console.log(record.id);
+			console.log(id);
 
 			//把树节点的text设置cookie
 			var cookie = new Ext.state.CookieProvider();
